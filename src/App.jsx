@@ -1,9 +1,16 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import recipeService from "./service/recipes.js";
 
 import "./App.css";
 
 function App() {
   const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    recipeService.getRecipes().then((response) => {
+      console.log(response);
+    });
+  }, []);
 
   return (
     <>
