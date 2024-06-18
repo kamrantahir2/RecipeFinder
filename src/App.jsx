@@ -4,17 +4,21 @@ import recipeService from "./service/recipes.js";
 import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [searchInput, setSearchInput] = useState("");
+  const [result, setResult] = useState([]);
 
-  useEffect(() => {
-    recipeService.getRecipes().then((response) => {
-      console.log(response);
-    });
-  }, []);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const response = await recipeService.getRecipes(searchInput);
+    setResult(response);
+  };
+
+  console.log(result);
 
   return (
     <>
-      <div>test</div>
+      <input type="text" onChange={(e) => setSearchInput(e.target.value)} />
+      <button onClick={handleSubmit}>Submit</button>
     </>
   );
 }
