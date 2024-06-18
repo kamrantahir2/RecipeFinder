@@ -10,15 +10,33 @@ function App() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const response = await recipeService.getRecipes(searchInput);
-    setResult(response);
+    setResult(response.hits);
   };
 
   console.log(result);
 
   return (
     <>
-      <input type="text" onChange={(e) => setSearchInput(e.target.value)} />
-      <button onClick={handleSubmit}>Submit</button>
+      <div className="Search">
+        <input type="text" onChange={(e) => setSearchInput(e.target.value)} />
+        <button onClick={handleSubmit}>Submit</button>
+      </div>
+
+      <div className="result">
+        {result.map((r) => {
+          return (
+            <div key={r.recipe.uri}>
+              <p>{r.recipe.label}</p>
+              <p>
+                ingredients:{" "}
+                {r.recipe.ingredientLines.map((i) => {
+                  return <div key={i}>{i}</div>;
+                })}
+              </p>
+            </div>
+          );
+        })}
+      </div>
     </>
   );
 }
