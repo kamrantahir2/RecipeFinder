@@ -10,10 +10,9 @@ function App() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const response = await recipeService.getRecipes(searchInput);
+    console.log(response.hits);
     setResult(response.hits);
   };
-
-  console.log(result);
 
   return (
     <>
@@ -27,12 +26,12 @@ function App() {
           return (
             <div key={r.recipe.uri}>
               <p>{r.recipe.label}</p>
-              <p>
+              <div>
                 ingredients:{" "}
-                {r.recipe.ingredientLines.map((i) => {
-                  return <div key={i}>{i}</div>;
+                {r.recipe.ingredientLines.map((item, index) => {
+                  return <p key={index}>{item}</p>;
                 })}
-              </p>
+              </div>
             </div>
           );
         })}
