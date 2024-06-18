@@ -16,10 +16,14 @@ function App() {
 
   return (
     <>
-      <div className="Search">
+      <div className="Search bg-white">
         <input type="text" onChange={(e) => setSearchInput(e.target.value)} />
-        <button onClick={handleSubmit}>Submit</button>
+        <button className="" onClick={handleSubmit}>
+          Submit
+        </button>
       </div>
+
+      <h1 className="text-red-900 underline">test</h1>
 
       <div className="result">
         {result.map((r) => {
