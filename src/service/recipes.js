@@ -1,5 +1,7 @@
 import axios from "axios";
-const baseUrl = `https://api.edamam.com/api/recipes/v2?type=public&app_id=${
+
+// &to=100 Add this to bvaseUrl for 100 recipes
+const baseUrl = `https://api.edamam.com/search?app_id=${
   import.meta.env.VITE_APP_ID
 }&app_key=${import.meta.env.VITE_APP_KEY}`;
 
