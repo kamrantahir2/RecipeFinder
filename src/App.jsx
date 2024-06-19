@@ -18,7 +18,7 @@ function App() {
     <>
       <div className="Search ">
         <input
-          className="input bg-white mr-3"
+          className="input bg-white mr-3 text-black"
           type="text"
           onChange={(e) => setSearchInput(e.target.value)}
         />
@@ -27,16 +27,29 @@ function App() {
         </button>
       </div>
 
-      <div className="result">
+      <div className="grid grid-cols-3 gap-9 mt-20 text-black">
         {result.map((r) => {
           return (
-            <div key={r.recipe.uri}>
-              <p>{r.recipe.label}</p>
-              <div>
-                ingredients:{" "}
-                {r.recipe.ingredientLines.map((item, index) => {
-                  return <p key={index}>{item}</p>;
-                })}
+            <div className="card bg-white shadow-xl" key={r.recipe.uri}>
+              <div className="mt-7 m-auto">
+                <img className="rounded-xl" src={r.recipe.image} alt="Food" />
+              </div>
+
+              <div className="card-body">
+                <h2 className="card-title">{r.recipe.label}</h2>
+                <ul>
+                  <p>Ingredients: </p>
+                  {r.recipe.ingredientLines.map((item, index) => (
+                    <li key={index}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+              <div className="card-actions justify-end pr-4 pb-4">
+                <a target="_blank" href={r.recipe.url}>
+                  <button className="btn text-white btn-primary">
+                    Get Recipe
+                  </button>
+                </a>
               </div>
             </div>
           );
