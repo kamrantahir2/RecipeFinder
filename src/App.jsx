@@ -23,7 +23,8 @@ function App() {
         </button>
       </div>
 
-      <h1 className="text-red-900 underline">test</h1>
+      <h1 className="text-red-900">test</h1>
+      <h2></h2>
 
       <div className="result">
         {result.map((r) => {
