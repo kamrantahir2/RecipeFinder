@@ -1,17 +1,21 @@
 import { useState, useEffect } from "react";
 import recipeService from "./service/recipes.js";
-
+import Pagination from "./components/Pagination.jsx";
 import "./App.css";
 
 function App() {
   const [searchInput, setSearchInput] = useState("");
   const [result, setResult] = useState([]);
+  const [pageRecipes, setPageRecipes] = useState([]);
+
+  const pageLimit = 9;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const response = await recipeService.getRecipes(searchInput);
     console.log(response.hits);
     setResult(response.hits);
+    setPageNumber();
   };
 
   return (
@@ -28,7 +32,7 @@ function App() {
       </div>
 
       <div className="grid grid-cols-3 gap-9 mt-20 text-black">
-        {result.map((r) => {
+        {pageRecipes.map((r) => {
           return (
             <div className="card bg-white shadow-xl" key={r.recipe.uri}>
               <div className="mt-7 m-auto">
@@ -55,6 +59,11 @@ function App() {
           );
         })}
       </div>
+      <Pagination
+        items={result}
+        pageLimit={pageLimit}
+        setPageItems={setPageRecipes}
+      />
     </>
   );
 }
