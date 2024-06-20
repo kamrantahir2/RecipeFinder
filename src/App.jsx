@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import recipeService from "./service/recipes.js";
 import Pagination from "./components/Pagination.jsx";
 import "./App.css";
+import usePagination from "./components/usePagination.js";
 
 function App() {
   const [searchInput, setSearchInput] = useState("");
@@ -10,12 +11,14 @@ function App() {
 
   const pageLimit = 9;
 
+  // const { pageNumber, changePage, pageData, nextPage, previousPage } =
+  //   usePagination(result, pageLimit);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const response = await recipeService.getRecipes(searchInput);
     console.log(response.hits);
     setResult(response.hits);
-    setPageNumber();
   };
 
   return (
@@ -59,6 +62,7 @@ function App() {
           );
         })}
       </div>
+
       <Pagination
         items={result}
         pageLimit={pageLimit}

@@ -4,7 +4,7 @@ function usePagination(items, pageLimit) {
   const [pageNumber, setPageNumber] = useState(0);
   const pageCount = Math.ceil(items.length / pageLimit);
 
-  const changePage = (Pn) => {
+  const changePage = (pN) => {
     setPageNumber(pN);
   };
 
