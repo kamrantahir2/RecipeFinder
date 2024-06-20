@@ -12,23 +12,17 @@ const Pagination = (props) => {
   let totalPages = [];
 
   for (let i = 0; i < props.items.length / props.pageLimit; i++) {
-    totalPages.push(i + 1);
+    totalPages.push(i);
   }
 
   return (
     <div>
       <button onClick={previousPage}>Previous</button>
-      {/* <input
-        value={pageNumber}
-        onChange={(e) => {
-          changePage(e.target.valueAsNumber);
-        }}
-        type="number"
-      /> */}
+
       {totalPages.map((pageN) => {
         return (
           <button onClick={() => changePage(pageN)} key={pageN}>
-            {pageN}
+            {pageN + 1}
           </button>
         );
       })}

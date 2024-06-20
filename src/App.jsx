@@ -11,14 +11,12 @@ function App() {
 
   const pageLimit = 9;
 
-  // const { pageNumber, changePage, pageData, nextPage, previousPage } =
-  //   usePagination(result, pageLimit);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     const response = await recipeService.getRecipes(searchInput);
     console.log(response.hits);
     setResult(response.hits);
+    setPageRecipes(response.hits.slice(0, 9));
   };
 
   return (
