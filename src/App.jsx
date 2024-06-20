@@ -2,22 +2,27 @@ import { useState, useEffect } from "react";
 import recipeService from "./service/recipes.js";
 import Pagination from "./components/Pagination.jsx";
 import "./App.css";
-import usePagination from "./components/usePagination.js";
 
 function App() {
   const [searchInput, setSearchInput] = useState("");
   const [result, setResult] = useState([]);
   const [pageRecipes, setPageRecipes] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const pageLimit = 9;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     const response = await recipeService.getRecipes(searchInput);
-    console.log(response.hits);
+    setLoading(false);
     setResult(response.hits);
-    setPageRecipes(response.hits.slice(0, 9));
+    setPageRecipes(response.hits.slice(0, pageLimit));
   };
+
+  if (loading) {
+    return <h1>Loading...</h1>;
+  }
 
   return (
     <>
@@ -61,11 +66,13 @@ function App() {
         })}
       </div>
 
-      <Pagination
-        items={result}
-        pageLimit={pageLimit}
-        setPageItems={setPageRecipes}
-      />
+      {result.length !== 0 && (
+        <Pagination
+          items={result}
+          pageLimit={pageLimit}
+          setPageItems={setPageRecipes}
+        />
+      )}
     </>
   );
 }

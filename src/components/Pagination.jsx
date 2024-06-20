@@ -16,7 +16,7 @@ const Pagination = (props) => {
   }
 
   return (
-    <div>
+    <div className="mt-5">
       <button onClick={previousPage}>Previous</button>
 
       {totalPages.map((pageN) => {
