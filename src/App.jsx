@@ -35,11 +35,11 @@ function App() {
         <button type="submit">Submit</button>
       </form>
 
-      <div className="grid grid-cols-3 mt-20 text-black ">
+      <div className="w-9/12 md:w-full m-auto md:grid md:grid-cols-2 lg:grid-cols-3 mt-20 text-black ">
         {pageRecipes.map((r) => {
           return (
             <div
-              className="card mx-2 bg-gray-50 capitalize text-black shadow-xl my-7 "
+              className=" card mx-2 bg-gray-50 capitalize text-black shadow-2xl my-7 "
               key={r.recipe.uri}
             >
               <h2 className="m-auto text-2xl mt-8 ">{r.recipe.label}</h2>
@@ -47,14 +47,14 @@ function App() {
               <figure className="">
                 <img
                   src={r.recipe.image}
-                  className=" w-9/12 rounded-xl"
-                  alt="Album"
+                  className=" w-10/12  lg:w-9/12 rounded-xl"
+                  alt={r.recipe.label}
                 />
               </figure>
 
-              <div className="card-body"></div>
+              <div className=" mt-3 md:mt-0 md:card-body"></div>
               <a href={r.recipe.url} target="_blank">
-                <button className="btn btn-primary mb-6 text-white text-lg ">
+                <button className="btn btn-primary mb-6 text-white lg:text-lg ">
                   Get Recipe
                 </button>
               </a>
