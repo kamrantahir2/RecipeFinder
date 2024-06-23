@@ -3,6 +3,7 @@ import recipeService from "./service/recipes.js";
 import Pagination from "./components/Pagination.jsx";
 import "./App.css";
 import Recipe from "./components/Recipe.jsx";
+import Hero from "./components/Hero.jsx";
 
 function App() {
   const [searchInput, setSearchInput] = useState("");
@@ -22,11 +23,17 @@ function App() {
   };
 
   if (loading) {
-    return <h1>Loading...</h1>;
+    return (
+      <div>
+        <Hero />
+        <h1>Loading...</h1>
+      </div>
+    );
   }
 
   return (
     <div className="font-playwrite">
+      <Hero />
       <form onSubmit={handleSubmit} className="Search ">
         <input
           className="input bg-white mr-3 border-2 border-black text-black"
