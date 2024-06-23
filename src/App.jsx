@@ -39,7 +39,7 @@ function App() {
   }
 
   return (
-    <div className="font-playwrite w-screen">
+    <div className="font-playwrite">
       <Hero />
       <form onSubmit={handleSubmit} className="Search mt-2 md:mt-0">
         <input
