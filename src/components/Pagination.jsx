@@ -16,13 +16,15 @@ const Pagination = (props) => {
   }
 
   return (
-    <div className="mt-5 text-white">
-      <button onClick={previousPage}>Previous</button>
+    <div className="mt-5 text-white join">
+      <button className="join-item" onClick={previousPage}>
+        Previous
+      </button>
 
       {totalPages.map((pageN) => {
         return (
           <button
-            className="mx-1"
+            className="join-item btn text-white"
             onClick={() => changePage(pageN)}
             key={pageN}
           >
@@ -30,7 +32,9 @@ const Pagination = (props) => {
           </button>
         );
       })}
-      <button onClick={nextPage}>Next</button>
+      <button className="join-item" onClick={nextPage}>
+        Next
+      </button>
     </div>
   );
 };
