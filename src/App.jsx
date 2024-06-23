@@ -47,7 +47,7 @@ function App() {
           type="text"
           onChange={(e) => setSearchInput(e.target.value)}
         />
-        <button className="text-white " type="submit">
+        <button className="text-white mt-4 md:mt-0" type="submit">
           Submit
         </button>
       </form>
