@@ -42,31 +42,22 @@ function App() {
               className="card mx-2 bg-gray-50 capitalize text-black shadow-xl my-7 "
               key={r.recipe.uri}
             >
-              <figure className="py-10">
+              <h2 className="m-auto text-2xl mt-8 ">{r.recipe.label}</h2>
+              <h2 className="mb-3">{r.recipe.cuisineType}</h2>
+              <figure className="">
                 <img
                   src={r.recipe.image}
                   className=" w-9/12 rounded-xl"
                   alt="Album"
                 />
               </figure>
-              <h2 className="m-auto text-2xl">{r.recipe.label}</h2>
-              <div className="card-body">
-                <div>
-                  <p>{r.recipe.yield} servings </p>
-                </div>
-                <div>
-                  <p>
-                    {Math.floor(r.recipe.calories / r.recipe.yield)}{" "}
-                    kcal/serving
-                  </p>
-                </div>
 
-                <a href={r.recipe.url} target="_blank">
-                  <button className="btn btn-primary mt-5 text-white text-lg ">
-                    Get Recipe
-                  </button>
-                </a>
-              </div>
+              <div className="card-body"></div>
+              <a href={r.recipe.url} target="_blank">
+                <button className="btn btn-primary mb-6 text-white text-lg ">
+                  Get Recipe
+                </button>
+              </a>
             </div>
           );
         })}
