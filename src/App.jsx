@@ -12,6 +12,10 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [noResults, setNoResults] = useState(false);
 
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, [pageRecipes]);
+
   const pageLimit = 9;
 
   const handleSubmit = async (e) => {
