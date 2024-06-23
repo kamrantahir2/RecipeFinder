@@ -25,38 +25,44 @@ function App() {
   }
 
   return (
-    <>
-      <div className="Search ">
+    <div className="">
+      <form onSubmit={handleSubmit} className="Search ">
         <input
-          className="input bg-white mr-3 text-black"
+          className="input bg-white mr-3 border-2 border-black text-black"
           type="text"
           onChange={(e) => setSearchInput(e.target.value)}
         />
-        <button className="" onClick={handleSubmit}>
-          Submit
-        </button>
-      </div>
+        <button type="submit">Submit</button>
+      </form>
 
-      <div className="grid grid-cols-3 gap-9 mt-20 text-black">
+      <div className="grid grid-cols-3 mt-20 text-black ">
         {pageRecipes.map((r) => {
           return (
-            <div className="card bg-white shadow-xl" key={r.recipe.uri}>
-              <div className="mt-7 m-auto">
-                <img className="rounded-xl" src={r.recipe.image} alt="Food" />
-              </div>
-
+            <div
+              className="card mx-2 bg-gray-50 capitalize text-black shadow-xl my-7 "
+              key={r.recipe.uri}
+            >
+              <figure className="py-10">
+                <img
+                  src={r.recipe.image}
+                  className=" w-9/12 rounded-xl"
+                  alt="Album"
+                />
+              </figure>
+              <h2 className="m-auto text-2xl">{r.recipe.label}</h2>
               <div className="card-body">
-                <h2 className="card-title">{r.recipe.label}</h2>
-                <ul>
-                  <p>Ingredients: </p>
-                  {r.recipe.ingredientLines.map((item, index) => (
-                    <li key={index}>{item}</li>
-                  ))}
-                </ul>
-              </div>
-              <div className="card-actions justify-end pr-4 pb-4">
-                <a target="_blank" href={r.recipe.url}>
-                  <button className="btn text-white btn-primary">
+                <div>
+                  <p>{r.recipe.yield} servings </p>
+                </div>
+                <div>
+                  <p>
+                    {Math.floor(r.recipe.calories / r.recipe.yield)}{" "}
+                    kcal/serving
+                  </p>
+                </div>
+
+                <a href={r.recipe.url} target="_blank">
+                  <button className="btn btn-primary mt-5 text-white text-lg ">
                     Get Recipe
                   </button>
                 </a>
@@ -73,7 +79,7 @@ function App() {
           setPageItems={setPageRecipes}
         />
       )}
-    </>
+    </div>
   );
 }
 

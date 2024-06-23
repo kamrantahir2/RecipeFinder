@@ -21,7 +21,11 @@ const Pagination = (props) => {
 
       {totalPages.map((pageN) => {
         return (
-          <button onClick={() => changePage(pageN)} key={pageN}>
+          <button
+            className="mx-1"
+            onClick={() => changePage(pageN)}
+            key={pageN}
+          >
             {pageN + 1}
           </button>
         );
