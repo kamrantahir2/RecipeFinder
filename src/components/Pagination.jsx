@@ -18,7 +18,7 @@ const Pagination = (props) => {
   return (
     <div className="">
       <div className="mt-5 text-white join hidden md:block">
-        <button className="join-item" onClick={previousPage}>
+        <button className="join-item btn text-white" onClick={previousPage}>
           Previous
         </button>
 
@@ -33,7 +33,7 @@ const Pagination = (props) => {
             </button>
           );
         })}
-        <button className="join-item" onClick={nextPage}>
+        <button className="join-item btn text-white" onClick={nextPage}>
           Next
         </button>
       </div>
