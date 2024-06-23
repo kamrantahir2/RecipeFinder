@@ -56,7 +56,7 @@ function App() {
         <div className="text-black mt-20 text-2xl">No search results</div>
       )}
 
-      <div className="w-full m-auto md:grid md:grid-cols-2 lg:grid-cols-3 mt-20 text-black ">
+      <div className="lg:w-full m-auto md:grid md:grid-cols-2 lg:grid-cols-3 mt-20 text-black ">
         {pageRecipes.map((recipe) => {
           return (
             <div key={recipe.recipe.uri}>
