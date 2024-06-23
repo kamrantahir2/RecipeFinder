@@ -1,7 +1,7 @@
 const Hero = () => {
   return (
     <div
-      className="hero w-full h-44 mb-12"
+      className="hero w-full h-44 mb-12 font-playwrite"
       style={{
         backgroundImage: "url(./recipeHero.jpg)",
       }}
