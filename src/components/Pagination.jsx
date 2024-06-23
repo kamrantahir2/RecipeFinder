@@ -39,10 +39,18 @@ const Pagination = (props) => {
       </div>
 
       <div className="join grid grid-cols-2 md:hidden">
-        <button className="join-item bg-base-100 btn btn-outline p-2">
+        <button
+          className="join-item bg-base-100 btn btn-outline p-2 text-white"
+          onClick={previousPage}
+        >
           Previous page
         </button>
-        <button className="join-item bg-base-100 btn btn-outline">Next</button>
+        <button
+          className="join-item bg-base-100 btn btn-outline p-2 text-white"
+          onClick={nextPage}
+        >
+          Next
+        </button>
       </div>
     </div>
   );
