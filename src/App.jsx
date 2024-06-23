@@ -11,6 +11,7 @@ function App() {
   const [pageRecipes, setPageRecipes] = useState([]);
   const [loading, setLoading] = useState(false);
   const [noResults, setNoResults] = useState(false);
+  let searchQuery = [];
 
   useEffect(() => {
     window.scroll(0, 0);
@@ -21,7 +22,8 @@ function App() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    const response = await recipeService.getRecipes(searchInput);
+    searchQuery.push(`&q=${searchInput}`);
+    const response = await recipeService.getRecipes(searchQuery);
     setLoading(false);
     setResult(response.hits);
     setPageRecipes(response.hits.slice(0, pageLimit));
@@ -31,6 +33,7 @@ function App() {
     } else {
       setNoResults(false);
     }
+    searchQuery = [];
   };
 
   if (loading) {
