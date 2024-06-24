@@ -25,7 +25,11 @@ const Pagination = (props) => {
         {totalPages.map((pageN) => {
           return (
             <button
-              className="join-item btn text-white"
+              className={
+                pageNumber == pageN
+                  ? " join-item btn text-yellow-300 "
+                  : "join-item btn text-white"
+              }
               onClick={() => changePage(pageN)}
               key={pageN}
             >
