@@ -1,6 +1,5 @@
 import axios from "axios";
 
-// &to=100 Add this to baseUrl for 100 recipes
 const baseUrl = `https://api.edamam.com/search?app_id=${
   import.meta.env.VITE_APP_ID
 }&app_key=${import.meta.env.VITE_APP_KEY}&to=100`;

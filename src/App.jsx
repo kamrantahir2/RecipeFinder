@@ -11,6 +11,7 @@ function App() {
   const [pageRecipes, setPageRecipes] = useState([]);
   const [loading, setLoading] = useState(false);
   const [noResults, setNoResults] = useState(false);
+  const [cuisineType, setCuisineType] = useState("");
   let searchQuery = [];
 
   useEffect(() => {
@@ -23,11 +24,11 @@ function App() {
     e.preventDefault();
     setLoading(true);
     searchQuery.push(`&q=${searchInput}`);
+    searchQuery.push(`&cuisineType=${cuisineType}`);
     const response = await recipeService.getRecipes(searchQuery);
     setLoading(false);
     setResult(response.hits);
     setPageRecipes(response.hits.slice(0, pageLimit));
-    setSearchInput("");
     if (response.hits.length === 0) {
       setNoResults(true);
     } else {
@@ -49,12 +50,23 @@ function App() {
     <div className="font-playwrite">
       <Hero />
       <form onSubmit={handleSubmit} className="Search mt-2 md:mt-0">
-        <input
-          className="input bg-white mr-3 border-2 border-black text-black"
-          type="text"
-          onChange={(e) => setSearchInput(e.target.value)}
-        />
-        <button className="text-white mt-4 md:mt-0" type="submit">
+        <div>
+          <input
+            className="input bg-white border-2 border-black text-black"
+            type="text"
+            placeholder="Ingredients"
+            onChange={(e) => setSearchInput(e.target.value)}
+          />
+        </div>
+        <div>
+          <input
+            type="text"
+            className="bg-white input border-2 mt-3 border-black  m-auto text-black"
+            placeholder="Cuisine"
+            onChange={(e) => setCuisineType(e.target.value)}
+          />
+        </div>
+        <button className="text-white mt-4 md:mt-3 block m-auto" type="submit">
           Submit
         </button>
       </form>
