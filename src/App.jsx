@@ -13,7 +13,6 @@ function App() {
   const [noResults, setNoResults] = useState(false);
   const [cuisineType, setCuisineType] = useState("");
   let searchQuery = [];
-  let cuisineChanged = false;
 
   useEffect(() => {
     window.scroll(0, 0);
@@ -27,10 +26,6 @@ function App() {
     searchQuery.push(`&q=${searchInput}`);
 
     if (cuisineType !== "") {
-      cuisineChanged = true;
-    }
-
-    if (cuisineChanged) {
       searchQuery.push(`&cuisineType=${cuisineType}`);
     }
 
@@ -45,7 +40,6 @@ function App() {
     }
     searchQuery = [];
     setCuisineType("");
-    cuisineChanged = false;
   };
 
   if (loading) {
