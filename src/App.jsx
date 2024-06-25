@@ -80,13 +80,10 @@ function App() {
         <div className="text-black mt-20 text-2xl">No search results</div>
       )}
 
-      <div className="lg:w-full m-auto md:grid md:grid-cols-2 lg:grid-cols-3 mt-20 text-black ">
+      {/* <div className="lg:w-full m-auto md:grid items-stretch md:grid-cols-2 lg:grid-cols-3 mt-20 gap-4 text-black "> */}
+      <div className="flex flex-row flex-wrap w-full">
         {pageRecipes.map((recipe) => {
-          return (
-            <div key={recipe.recipe.uri}>
-              <Recipe recipe={recipe} />
-            </div>
-          );
+          return <Recipe recipe={recipe} key={recipe.recipe.uri} />;
         })}
       </div>
 
