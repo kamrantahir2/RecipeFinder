@@ -1,11 +1,11 @@
 const Recipe = ({ recipe }) => {
   return (
-    <div className=" card mx-2 bg-gray-50 capitalize text-black shadow-2xl my-7 ">
+    <div className=" card mx-2 bg-gray-50 capitalize text-black shadow-2xl my-7 p-2">
       <div className="">
         <h2 className="m-auto lg:text-2xl mt-8 ">{recipe.recipe.label}</h2>
         <h2 className="mb-3 text-sm mt-4">{recipe.recipe.cuisineType}</h2>
       </div>
-      <figure>
+      <figure className="">
         <img
           src={recipe.recipe.image}
           className=" w-10/12 lg:w-9/12 rounded-xl"

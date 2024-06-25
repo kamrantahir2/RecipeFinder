@@ -13,6 +13,7 @@ function App() {
   const [noResults, setNoResults] = useState(false);
   const [cuisineType, setCuisineType] = useState("");
   let searchQuery = [];
+  let cuisineChanged = false;
 
   useEffect(() => {
     window.scroll(0, 0);
@@ -24,7 +25,15 @@ function App() {
     e.preventDefault();
     setLoading(true);
     searchQuery.push(`&q=${searchInput}`);
-    searchQuery.push(`&cuisineType=${cuisineType}`);
+
+    if (cuisineType !== "") {
+      cuisineChanged = true;
+    }
+
+    if (cuisineChanged) {
+      searchQuery.push(`&cuisineType=${cuisineType}`);
+    }
+
     const response = await recipeService.getRecipes(searchQuery);
     setLoading(false);
     setResult(response.hits);
@@ -35,6 +44,8 @@ function App() {
       setNoResults(false);
     }
     searchQuery = [];
+    setCuisineType("");
+    cuisineChanged = false;
   };
 
   if (loading) {
