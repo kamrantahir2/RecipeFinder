@@ -40,6 +40,7 @@ function App() {
     }
     searchQuery = [];
     setCuisineType("");
+    setSearchInput("");
   };
 
   if (loading) {
