@@ -5,6 +5,7 @@ import "./App.css";
 import Recipe from "./components/Recipe.jsx";
 import Hero from "./components/Hero.jsx";
 import { Fade, Slide } from "react-awesome-reveal";
+import SearchForm from "./components/SearchForm.jsx";
 
 function App() {
   const [searchInput, setSearchInput] = useState("");
@@ -65,38 +66,28 @@ function App() {
           </h3>
         </Fade>
       )}
-      <Fade direction="up">
-        <form onSubmit={handleSubmit} className="Search mt-2 md:mt-0">
-          <div>
-            <input
-              className="input bg-white border-2 border-black text-black"
-              type="text"
-              placeholder="Ingredients"
-              onChange={(e) => setSearchInput(e.target.value)}
-            />
-          </div>
-          <div>
-            <input
-              type="text"
-              className="bg-white input border-2 mt-3 border-black  m-auto text-black"
-              placeholder="Cuisine"
-              onChange={(e) => setCuisineType(e.target.value)}
-            />
-          </div>
-          <button
-            className="text-white mt-4 md:mt-3 block m-auto"
-            type="submit"
-          >
-            Submit
-          </button>
-        </form>
-      </Fade>
+
+      {!searchesMade ? (
+        <Fade direction="up" triggerOnce>
+          <SearchForm
+            handleSubmit={handleSubmit}
+            setCuisineType={setCuisineType}
+            setSearchInput={setSearchInput}
+          />
+        </Fade>
+      ) : (
+        <SearchForm
+          handleSubmit={handleSubmit}
+          setCuisineType={setCuisineType}
+          setSearchInput={setSearchInput}
+        />
+      )}
 
       {noResults && (
         <div className="text-black mt-20 text-2xl">No search results</div>
       )}
 
-      <Fade duration={1200}>
+      <Fade duration={1200} triggerOnce>
         <div className="flex flex-row flex-wrap w-full gap-5">
           {pageRecipes.map((recipe) => {
             return <Recipe recipe={recipe} key={recipe.recipe.uri} />;
