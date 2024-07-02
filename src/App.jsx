@@ -57,7 +57,7 @@ function App() {
 
   return (
     <div className="font-playwrite">
-      <Hero />
+      <Hero searchesMade={searchesMade} />
       {!searchesMade && (
         <h3 className="mb-6 text-black text-xl border-2 lg:w-3/12 m-auto p-3 border-cyan-400 rounded-xl">
           Type in an ingredient or cuisine to start
