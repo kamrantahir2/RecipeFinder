@@ -1,6 +1,6 @@
 const Recipe = ({ recipe }) => {
   return (
-    <div className=" card mx-2 bg-gray-50 capitalize text-black shadow-2xl my-7 p-2 w-full lg:w-3/12 flex-grow">
+    <div className=" card mx-2 bg-gray-50 capitalize text-black shadow-2xl my-7 p-2 w-full lg:w-3/12 flex-auto md:max-w-sm">
       <div className="">
         <h2 className=" lg:text-2xl mt-8 ">{recipe.recipe.label}</h2>
       </div>

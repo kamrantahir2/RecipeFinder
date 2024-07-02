@@ -12,6 +12,7 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [noResults, setNoResults] = useState(false);
   const [cuisineType, setCuisineType] = useState("");
+  const [searchesMade, setSearchesMade] = useState(false);
   let searchQuery = [];
 
   useEffect(() => {
@@ -41,6 +42,7 @@ function App() {
     searchQuery = [];
     setCuisineType("");
     setSearchInput("");
+    setSearchesMade(true);
   };
 
   if (loading) {
@@ -55,6 +57,11 @@ function App() {
   return (
     <div className="font-playwrite">
       <Hero />
+      {!searchesMade && (
+        <h3 className="mb-6 text-black text-xl border-2 w-3/12 m-auto p-3 border-cyan-400 rounded-xl">
+          Type in an ingredient or cuisine to start
+        </h3>
+      )}
       <form onSubmit={handleSubmit} className="Search mt-2 md:mt-0">
         <div>
           <input
@@ -81,8 +88,7 @@ function App() {
         <div className="text-black mt-20 text-2xl">No search results</div>
       )}
 
-      {/* <div className="lg:w-full m-auto md:grid items-stretch md:grid-cols-2 lg:grid-cols-3 mt-20 gap-4 text-black "> */}
-      <div className="flex flex-row flex-wrap w-full">
+      <div className="flex flex-row flex-wrap w-full gap-5">
         {pageRecipes.map((recipe) => {
           return <Recipe recipe={recipe} key={recipe.recipe.uri} />;
         })}
