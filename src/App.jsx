@@ -4,6 +4,7 @@ import Pagination from "./components/Pagination.jsx";
 import "./App.css";
 import Recipe from "./components/Recipe.jsx";
 import Hero from "./components/Hero.jsx";
+import { Fade } from "react-awesome-reveal";
 
 function App() {
   const [searchInput, setSearchInput] = useState("");
@@ -88,11 +89,13 @@ function App() {
         <div className="text-black mt-20 text-2xl">No search results</div>
       )}
 
-      <div className="flex flex-row flex-wrap w-full gap-5">
-        {pageRecipes.map((recipe) => {
-          return <Recipe recipe={recipe} key={recipe.recipe.uri} />;
-        })}
-      </div>
+      <Fade duration={1200}>
+        <div className="flex flex-row flex-wrap w-full gap-5">
+          {pageRecipes.map((recipe) => {
+            return <Recipe recipe={recipe} key={recipe.recipe.uri} />;
+          })}
+        </div>
+      </Fade>
 
       {result.length !== 0 && (
         <Pagination

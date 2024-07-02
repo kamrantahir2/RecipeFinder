@@ -1,3 +1,5 @@
+import { Fade } from "react-awesome-reveal";
+
 const Recipe = ({ recipe }) => {
   return (
     <div className=" card mx-2 bg-gray-50 capitalize text-black shadow-2xl my-7 p-2 w-full lg:w-3/12 flex-auto md:max-w-sm">
@@ -14,6 +16,7 @@ const Recipe = ({ recipe }) => {
             alt={recipe.recipe.label}
           />
         </figure>
+
         <a href={recipe.recipe.url} target="_blank" className="">
           <button className="btn btn-primary mt-4 mb-6 text-white lg:text-lg lg:h-14 lg:w-9/12 ">
             Find out more
