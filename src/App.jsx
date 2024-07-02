@@ -4,7 +4,7 @@ import Pagination from "./components/Pagination.jsx";
 import "./App.css";
 import Recipe from "./components/Recipe.jsx";
 import Hero from "./components/Hero.jsx";
-import { Fade } from "react-awesome-reveal";
+import { Fade, Slide } from "react-awesome-reveal";
 
 function App() {
   const [searchInput, setSearchInput] = useState("");
@@ -59,31 +59,38 @@ function App() {
     <div className="font-playwrite">
       <Hero searchesMade={searchesMade} />
       {!searchesMade && (
-        <h3 className="mb-6 text-black text-xl border-2 lg:w-3/12 m-auto p-3 border-cyan-400 rounded-xl">
-          Type in an ingredient or cuisine to start
-        </h3>
+        <Fade direction="up">
+          <h3 className="mb-6 text-black text-xl border-2 lg:w-3/12 m-auto p-3 border-cyan-400 rounded-xl">
+            Type in an ingredient or cuisine to start
+          </h3>
+        </Fade>
       )}
-      <form onSubmit={handleSubmit} className="Search mt-2 md:mt-0">
-        <div>
-          <input
-            className="input bg-white border-2 border-black text-black"
-            type="text"
-            placeholder="Ingredients"
-            onChange={(e) => setSearchInput(e.target.value)}
-          />
-        </div>
-        <div>
-          <input
-            type="text"
-            className="bg-white input border-2 mt-3 border-black  m-auto text-black"
-            placeholder="Cuisine"
-            onChange={(e) => setCuisineType(e.target.value)}
-          />
-        </div>
-        <button className="text-white mt-4 md:mt-3 block m-auto" type="submit">
-          Submit
-        </button>
-      </form>
+      <Fade direction="up">
+        <form onSubmit={handleSubmit} className="Search mt-2 md:mt-0">
+          <div>
+            <input
+              className="input bg-white border-2 border-black text-black"
+              type="text"
+              placeholder="Ingredients"
+              onChange={(e) => setSearchInput(e.target.value)}
+            />
+          </div>
+          <div>
+            <input
+              type="text"
+              className="bg-white input border-2 mt-3 border-black  m-auto text-black"
+              placeholder="Cuisine"
+              onChange={(e) => setCuisineType(e.target.value)}
+            />
+          </div>
+          <button
+            className="text-white mt-4 md:mt-3 block m-auto"
+            type="submit"
+          >
+            Submit
+          </button>
+        </form>
+      </Fade>
 
       {noResults && (
         <div className="text-black mt-20 text-2xl">No search results</div>
